@@ -16,17 +16,18 @@
 int main(void)
 {
 	DDRE = 0b00111000;  //вывод светодиода
-	TCCR3A = (1<<CS32);  //43200 max
-    TCCR3B = (1<<CS32);
-    TCCR3C = (1<<CS32);
+	TCCR3A = (1<<CS30);  //43200 max
+    TCCR3B = (1<<CS30);
+    TCCR3C = (1<<CS30);
 
 	
-	timer_ini();
+	// timer_ini();
 	sei(); //разрешение прерываний
 	while (1){
-        OCR3A = 2000;
+        OCR3A = 65000;
         OCR3B = 20000;
-        OCR3C = 10000;
+        OCR3C = 0;
 
     }
 }
+// C:\Users\student>git config --global http.proxy http://10.128.0.90:8080
