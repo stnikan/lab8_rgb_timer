@@ -1,6 +1,6 @@
 #include <avr/io.h>
 #define F_CPU 11059200UL
-// мог быть delay но он для слабых
+#include <util/delay.h>
 #include <avr/interrupt.h> //для использования прерываний
 // ———————————————
 // ———————————————
@@ -21,10 +21,19 @@ int main(void)
     // timer_ini();
     // sei(); // разрешение прерываний
     while (1)
-    {
-        OCR3A = 1023;
-        OCR3B = 511;
-        OCR3C = 0;
+    {   
+        for (uint16_t i = 0;i<1023;i=i+10){
+            for (uint16_t j = 0;j<1023;j=j+10){
+                for (uint16_t l = 0;l<1023;l=l+10){
+                    OCR3A = i;
+                    OCR3B = j;
+                    OCR3C = l;
+                    _delay_us(100);
+                }
+            }
+        }
+        
+
     }
 }
 // C:\Users\student>git config --global http.proxy http://10.128.0.90:8080
